@@ -1,0 +1,318 @@
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: url('mozdani.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  color: #fff;
+}
+
+.start-screen {
+  left: 150px;
+  top: 150px;
+  position: fixed;
+}
+
+.quiz-container {
+  background: linear-gradient(to bottom, #111133, #113311);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+  border: 2px solid #00ff2a;
+  top: 270px;
+  position: absolute;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #00ff2a;
+}
+
+.nav-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #00ff2a;
+  text-shadow: 0 0 8px #00ff2a;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #00ff2a;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+  text-shadow: 0 0 5px #00ff2a;
+}
+
+.nav-link.active {
+  color: #ffffff;
+  text-shadow: 0 0 8px #00ff2a;
+}
+
+
+.quiz-container h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  text-shadow: 0 0 5px #00ff2a;
+}
+
+
+.options button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border: 2px solid #00ff2a;
+  border-radius: 10px;
+  background: #111133;
+  color: #00ff2a;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-shadow: 0 0 5px #00ff2a;
+}
+
+.options button:hover {
+  background: #00ff2a;
+  color: #113311;
+  text-shadow: none;
+  font-weight: bold;
+}
+
+
+.restart-btn {
+  background: #00ff2a;
+  color: #113311;
+  padding: 10px 20px;
+  margin-top: 15px;
+  border-radius: 10px;
+  border: 2px solid #00ff2a;
+  font-weight: bold;
+}
+
+.restart-btn:hover {
+  background: #ffffff;
+  color: #113311;
+}
+
+#progress {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #ff0000;
+}
+
+
+@media (max-width: 500px) {
+  .quiz-container {
+    width: 95%;
+    padding: 15px;
+  }
+  .options button {
+    font-size: 14px;
+  }
+  .nav-title {
+    font-size: 18px;
+  }
+}
+
+.btn-about {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 18px;
+  background: #8e44ad;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn-about:hover {
+  background: #732d91;
+}
+
+.lang-switch {
+  display: flex;
+  justify-content: flex-end; /* aligns button to the right */
+  margin: 20px;
+}
+
+.lang-switch button {
+  background-color: #1f2937; /* dark gray */
+  color: #f9fafb; /* light text */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* space between flag and text */
+  left: 30px;
+  top:40px;
+  position: fixed;
+}
+
+.navbar {
+  background-color: #222;
+  padding: 10px 20px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.navbar ul li a:hover {
+  color: #00bcd4;
+}
+
+/* Add padding to body so content is not hidden behind navbar */
+body {
+  padding-top: 60px;
+}
+
+
+.lang-switch button:hover {
+  background-color: #374151; /* slightly lighter gray */
+  transform: scale(1.05);
+}
+
+.lang-switch button:focus {
+  outline: 2px solid #3b82f6; /* blue focus ring */
+  outline-offset: 2px;
+}
+
+
+.btn-about:hover {
+  background: #732d91;
+}
+
+/* Wrapper to align quiz + money ladder side by side */
+.quiz-wrapper {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  position: fixed;
+}
+
+.ladder {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  margin-top: 20px;
+  font-family: monospace;
+}
+.ladder div {
+  padding: 4px 10px;
+  border-radius: 5px;
+}
+.ladder .active {
+  background-color: gold;
+  color: black;
+  font-weight: bold;
+}
+
+
+.prizeDisplay {
+  background: #113311;
+  border: 2px solid #00ff2a;
+  border-radius: 12px;
+  padding: 15px;
+  width: 300px;
+  color: #00ff2a;
+  font-weight: bold;
+  text-align: right;
+  box-shadow: 0 0 15px rgba(0,255,255,0.2);
+  font-size: 25px;
+  right: 150px;
+  top: 280px;
+  position: fixed;
+}
+
+.prizeDisplay ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.prizeDisplay li {
+  padding: 5px 0;
+  transition: 0.3s;
+}
+
+
+.prizeDisplay li.active {
+  color: #ffffff;
+  text-shadow: 0 0 8px #00ff2a;
+  font-size: 70px;
+}
+
+
+.prizeDisplay ul {
+  max-height: 2000px;
+  overflow-y:auto;
+}
+
+.result-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 20px;
+}
+
+.rate-btn {
+  background-color: #ffd700;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.rate-btn:hover {
+  background-color: #ffcc00;
+  transform: scale(1.05);
+}

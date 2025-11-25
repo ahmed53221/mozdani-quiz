@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rate the Quiz</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle, #1e1e2f, #000);
+    color: white;
+    text-align: center;
+    padding: 50px;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .stars {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .stars span:hover, .stars span.active {
+    color: gold;
+  }
+
+  input, textarea {
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    width: 80%;
+    max-width: 300px;
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: gold;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  #owner-btn {
+    display: none;
+    background: crimson;
+    color: white;
+    margin-top: 40px;
+  }
+
+  #ratings-table {
+    display: none;
+    margin-top: 30px;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #ratings-table th, #ratings-table td {
+    border: 1px solid white;
+    padding: 8px;
+  }
+
+  #ratings-table th {
+    background: #333;
+  }
+
+  #ratings-table td {
+    background: #222;
+  }
+</style>
+</head>
+<body>
+  <h1>⭐ Rate the Quiz Game ⭐</h1>
+
+  <div class="stars">
+    <span data-rate="1">★</span>
+    <span data-rate="2">★</span>
+    <span data-rate="3">★</span>
+    <span data-rate="4">★</span>
+    <span data-rate="5">★</span>
+  </div>
+
+  <p id="rating-text">Click a star to rate!</p>
+
+  <input type="email" id="emailInput" placeholder="Enter your email" required><br>
+  <textarea id="commentInput" rows="3" placeholder="Leave a comment (optional)"></textarea><br>
+
+  <button id="submit-btn">Send Rating</button>
+  <button onclick="window.location.href='index.html'">Back to Quiz</button>
+
+  
+  <button id="owner-btn" onclick="toggleRatings()">View Ratings (Owner)</button>
+
+
+  <table id="ratings-table">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Rating</th>
+        <th>Comment</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const stars = document.querySelectorAll('.stars span');
+    const ratingText = document.getElementById('rating-text');
+    const emailInput = document.getElementById('emailInput');
+    const commentInput = document.getElementById('commentInput');
+    const tableBody = document.querySelector('#ratings-table tbody');
+
+    let selectedRating = 0;
+
+
+    const savedRatings = JSON.parse(localStorage.getItem("quizRatings") || "[]");
+    renderRatings(savedRatings);
+
+ 
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        stars.forEach(s => s.classList.remove('active'));
+        star.classList.add('active');
+        selectedRating = star.dataset.rate;
+        ratingText.textContent = "You rated this game " + selectedRating + " / 5 ⭐";
+      });
+    });
+
+
+    document.getElementById("submit-btn").addEventListener("click", () => {
+      const email = emailInput.value.trim();
+      const comment = commentInput.value.trim();
+
+      if (!selectedRating) {
+        alert("Please select a star rating first!");
+        return;
+      }
+      if (!email) {
+        alert("Please enter your email address!");
+        return;
+      }
+
+      const newRating = { email, rating: selectedRating, comment };
+      savedRatings.push(newRating);
+      localStorage.setItem("quizRatings", JSON.stringify(savedRatings));
+
+      renderRatings(savedRatings);
+
+      alert("✅ Thank you for rating!");
+      emailInput.value = "";
+      commentInput.value = "";
+      stars.forEach(s => s.classList.remove('active'));
+      selectedRating = 0;
+      ratingText.textContent = "Click a star to rate!";
+    });
+
+
+    function renderRatings(ratings) {
+      tableBody.innerHTML = "";
+      ratings.forEach(r => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td>${r.email}</td><td>${r.rating}</td><td>${r.comment || "-"}</td>`;
+        tableBody.appendChild(tr);
+      });
+    }
+
+
+    document.addEventListener("keydown", function (e) {
+      if (e.ctrlKey && e.key.toLowerCase() === "o") {
+        document.getElementById("owner-btn").style.display = "inline-block";
+      }
+    });
+
+
+    function toggleRatings() {
+      const table = document.getElementById("ratings-table");
+      table.style.display = table.style.display === "none" ? "table" : "none";
+    }
+  </script>
+</body>
+</html>
