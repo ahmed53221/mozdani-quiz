@@ -13,6 +13,12 @@ body {
   color: #fff;
 }
 
+#enter-link {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  cursor: pointer;
+}
 .start-screen {
   left: 150px;
   top: 150px;
@@ -316,3 +322,4 @@ body {
   background-color: #ffcc00;
   transform: scale(1.05);
 }
+
