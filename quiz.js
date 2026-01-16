@@ -13,6 +13,7 @@ const prizes = [
   "100,000","200,000","500,000","1,000,000"
 ];
 
+ quizEl.style.display = "none";
 const quizEl = document.getElementById("quiz");
 
 
@@ -301,4 +302,5 @@ document.addEventListener("keydown", function (event) {
 
 
 loadQuestions("main.js", showStartScreen);
+
 
