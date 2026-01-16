@@ -6,6 +6,13 @@
   <title>Quiz </title>
   <link rel="stylesheet" href="css.css" />
 </head>
+  <script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      window.location.href = "index.html"; // target page
+    }
+  });
+</script>
 <body>
   <nav class="navbar">
     <ul>
@@ -38,3 +45,4 @@
   <script src="quiz.js"></script>
 </body>
 </html>
+
