@@ -277,12 +277,7 @@ function showStartScreen() {
   document.body.appendChild(startScreen);
 }
 
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    const startScreen = document.querySelector(".start-screen");
-    if (startScreen) {
-      
-      startScreen.remove();
+
 
       document.body.style.backgroundImage = "url('nozdani.jpg')";
       document.body.style.backgroundSize = "cover";
@@ -301,4 +296,5 @@ document.addEventListener("keydown", function (event) {
 
 
 loadQuestions("main.js", showStartScreen);
+
 
