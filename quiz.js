@@ -263,7 +263,7 @@ function showResult() {
 
 function showStartScreen() {
   // Hide the quiz container initially
-  
+  quizEl.style.display = "none";
 
   // Create start screen container
   const startScreen = document.createElement("div");
@@ -277,7 +277,12 @@ function showStartScreen() {
   document.body.appendChild(startScreen);
 }
 
-
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    const startScreen = document.querySelector(".start-screen");
+    if (startScreen) {
+      
+      startScreen.remove();
 
       document.body.style.backgroundImage = "url('nozdani.jpg')";
       document.body.style.backgroundSize = "cover";
@@ -296,5 +301,4 @@ function showStartScreen() {
 
 
 loadQuestions("main.js", showStartScreen);
-
 
