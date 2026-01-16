@@ -263,7 +263,7 @@ function showResult() {
 
 function showStartScreen() {
   // Hide the quiz container initially
-  quizEl.style.display = "none";
+  
 
   // Create start screen container
   const startScreen = document.createElement("div");
@@ -301,3 +301,4 @@ document.addEventListener("keydown", function (event) {
 
 
 loadQuestions("main.js", showStartScreen);
+
